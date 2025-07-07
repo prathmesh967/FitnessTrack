@@ -18,12 +18,14 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div`
   flex: 1;
-  max-width: 1400px;
+  max-width: 1100px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 18px;
+  padding: 0 8px;
   @media (max-width: 600px) {
-    gap: 12px;
+    gap: 8px;
+    padding: 0 2px;
   }
 `;
 const Title = styled.div`
@@ -62,6 +64,103 @@ const CardWrapper = styled.div`
     gap: 12px;
   }
 `;
+
+const RecapSection = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 48px auto 0 auto;
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const RecapScroll = styled.div`
+  width: 100%;
+  max-width: 600px;
+  overflow-x: auto;
+  display: flex;
+  gap: 24px;
+  margin-top: 18px;
+`;
+const RecapCard = styled.div`
+  min-width: 220px;
+  background: ${({ theme }) => theme.bg_secondary};
+  border-radius: 12px;
+  box-shadow: ${({ theme }) => theme.card_shadow};
+  padding: 18px 18px;
+  text-align: center;
+  color: ${({ theme }) => theme.text_primary};
+`;
+const mockRecap = [
+  { month: "May", highlight: "12 Workouts", emoji: "💪" },
+  { month: "April", highlight: "Longest Streak: 8 days", emoji: "🔥" },
+  { month: "March", highlight: "Personal Best: 5K", emoji: "🏃‍♂️" },
+];
+
+const UnlocksSection = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 24px auto 0 auto;
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const UnlockBar = styled.div`
+  width: 100%;
+  max-width: 400px;
+  height: 18px;
+  background: #eee;
+  border-radius: 9px;
+  margin: 18px 0 0 0;
+  overflow: hidden;
+`;
+const UnlockFill = styled.div`
+  height: 100%;
+  background: linear-gradient(90deg, #43a047 60%, #b2ff59 100%);
+  border-radius: 9px;
+  transition: width 0.7s;
+`;
+const UnlockLabel = styled.div`
+  margin-top: 8px;
+  font-size: 15px;
+  color: #43a047;
+  font-weight: 600;
+`;
+const unlockProgress = 68; // percent
+
+const WidgetsSection = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 48px auto 0 auto;
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const WidgetsGrid = styled.div`
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+`;
+const Widget = styled.div`
+  background: ${({ theme }) => theme.bg_secondary};
+  border-radius: 12px;
+  box-shadow: ${({ theme }) => theme.card_shadow};
+  padding: 18px 24px;
+  min-width: 160px;
+  text-align: center;
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 15px;
+  cursor: grab;
+`;
+const mockWidgets = [
+  { label: "Calories Burned", value: "3200" },
+  { label: "Active Days", value: "18" },
+  { label: "Avg. Workout Time", value: "42 min" },
+];
 
 const Dashboard = () => {
   const [data, setData] = useState();
@@ -105,13 +204,33 @@ const Dashboard = () => {
   return (
     <Container>
       <Wrapper>
+        <RecapSection>
+          <h2 style={{ color: '#2196f3', marginBottom: 12 }}>Your Fitness Story</h2>
+          <RecapScroll>
+            {mockRecap.map((r, idx) => (
+              <RecapCard key={idx}>
+                <div style={{ fontSize: 32 }}>{r.emoji}</div>
+                <div style={{ fontWeight: 700, margin: '8px 0' }}>{r.month}</div>
+                <div>{r.highlight}</div>
+              </RecapCard>
+            ))}
+          </RecapScroll>
+        </RecapSection>
+        <WidgetsSection>
+          <h2 style={{ color: '#2196f3', marginBottom: 12 }}>Your Dashboard Widgets</h2>
+          <WidgetsGrid>
+            {mockWidgets.map((w, idx) => (
+              <Widget key={idx} draggable>{w.label}<div style={{ fontWeight: 700, fontSize: 18, marginTop: 6 }}>{w.value}</div></Widget>
+            ))}
+          </WidgetsGrid>
+          <div style={{ color: '#888', fontSize: 13, marginTop: 8 }}>(Drag to rearrange - UI only)</div>
+        </WidgetsSection>
         <Title>Dashboard</Title>
         <FlexWrap>
           {counts.map((item) => (
             <CountsCard item={item} data={data} />
           ))}
         </FlexWrap>
-
         <FlexWrap>
           <WeeklyStatCard data={data} />
           <CategoryChart data={data} />
@@ -122,7 +241,6 @@ const Dashboard = () => {
             buttonLoading={buttonLoading}
           />
         </FlexWrap>
-
         <Section>
           <Title>Todays Workouts</Title>
           <CardWrapper>
@@ -131,6 +249,13 @@ const Dashboard = () => {
             ))}
           </CardWrapper>
         </Section>
+        <UnlocksSection>
+          <h2 style={{ color: '#43a047', marginBottom: 12 }}>Unlocks</h2>
+          <UnlockBar>
+            <UnlockFill style={{ width: unlockProgress + '%' }} />
+          </UnlockBar>
+          <UnlockLabel>{unlockProgress}% to next unlock (New Workout Plan!)</UnlockLabel>
+        </UnlocksSection>
       </Wrapper>
     </Container>
   );
