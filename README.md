@@ -106,3 +106,13 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 - Data visualization with Chart.js
 - Icons provided by Material-UI Icons</content>
 <parameter name="filePath">d:\FitnessTrack\FitnessTrack\FItnessTrack-master\README.md
+
+<img width="1918" height="1077" alt="Screenshot 2026-05-05 165157" src="https://github.com/user-attachments/assets/cb0e4086-6a8f-45e1-84e2-cbc1dfd0f18d" />
+<img width="1918" height="1073" alt="Screenshot 2026-05-05 165209" src="https://github.com/user-attachments/assets/08900181-6057-4246-8f60-e5c27c17b1dd" />
+<img width="556" height="480" alt="Screenshot 2026-05-05 165229" src="https://github.com/user-attachments/assets/1543d28a-6356-464a-ae1d-994454b806ab" />
+<img width="1910" height="964" alt="Screenshot 2026-05-05 165650" src="https://github.com/user-attachments/assets/d4539af8-d6c0-4f75-ba9a-01cbf86040f8" />
+<img width="1652" height="974" alt="Screenshot 2026-05-05 171707" src="https://github.com/user-attachments/assets/4d900ec1-d5ea-443c-ace1-7177c5ae73c8" />
+<img width="1915" height="978" alt="Screenshot 2026-05-05 171800" src="https://github.com/user-attachments/assets/c1314e40-036c-420e-9003-46b520d149a9" />
+<img width="777" height="854" alt="Screenshot 2026-05-05 171817" src="https://github.com/user-attachments/assets/9c25be1c-dd2c-4a27-accb-0535e0132923" />
+<img width="1915" height="977" alt="Screenshot 2026-05-05 171836" src="https://github.com/user-attachments/assets/f616d7c9-bbfe-4d06-add7-c4fbb33f7139" />
+<img width="1919" height="1076" alt="Screenshot 2026-05-05 165139" src="https://github.com/user-attachments/assets/5e61846c-3a34-4b6f-9331-c531632a6cef" />
